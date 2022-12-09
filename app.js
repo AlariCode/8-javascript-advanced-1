@@ -1,24 +1,20 @@
 'use strict';
 
-console.log(Math.sqrt(36));
-console.log(36 ** (1/2))
-console.log(Math.cbrt(27));
-console.log(16 ** (1/4))
+console.log(Math.round(1.4));
+console.log(Math.round(1.6));
+console.log(Math.round(1.499999));
 
-console.log(Math.sign(-100));
-console.log(Math.sign(35));
-console.log(Math.abs(-100));
-console.log(Math.abs(100));
+console.log(Math.ceil(1.1));
+console.log(Math.ceil(1));
+console.log(Math.ceil(0.1));
 
-console.log(Math.exp(3));
+console.log(Math.floor(0.1));
+console.log(Math.floor(2.9));
 
-console.log(Math.max(1, -2, 10, 0, 19));
-console.log(Math.max(1, -2, '10', true, '19'));
-console.log(Math.max(1, -2, '10', true, 1.2));
-console.log(Math.min(1, -2, 10, 0, 19));
+console.log(Math.trunc(2.9));
+console.log(Math.trunc(2.1));
+console.log(Math.trunc(1.1111));
 
-const arr = [1, -2, 10, 0, 19];
-console.log(Math.max(...arr));
 
-console.log(Math.random());
-
+console.log(1.499999.toFixed(1));
+console.log(Number((1.499999).toFixed(1)));
