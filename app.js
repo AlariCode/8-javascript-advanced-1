@@ -1,16 +1,10 @@
 'use strict';
-
-const weatherMap = new Map([
+/* Необходимо поменять местами ключи и значения в следующем Map */
+let weatherMap = new Map([
 	['London', 10],
 	['Moscow', 7],
 	['Paris', 14],
 ]);
 
-for (const [key, value] of weatherMap) {
-	console.log(key);
-	console.log(value);
-}
-
-console.log([...weatherMap]);
-console.log([...weatherMap.keys()]);
-console.log([...weatherMap.values()]);
+weatherMap = new Map([...weatherMap].map(el => el.reverse()));
+console.log(weatherMap);
