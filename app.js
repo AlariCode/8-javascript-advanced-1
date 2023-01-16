@@ -1,21 +1,39 @@
 'use strict';
+/* Абстракция VS Инкапсуляция
+	- Название
+	- Режисёр
+	- Наш рейтинг
+	- Длительность
+	- Страна производства
+	- Актёры
+	- Трейлер
+	...
+*/
 
-const User = {
-	init(email, password) {
-		this.email = email;
-		this.password = password;
-	},
-	log() {
-		console.log('Log');
+class Film {
+	#name;
+	#author;
+	rating;
+	#length;
+
+	constructor(name, author, length) {
+		this.#name = name;
+		this.#author = author;
+		this.#length = length;
 	}
-};
 
-const user = Object.create(User);
-user.log();
-user.init('a@a.ru', '123');
-console.log(user);
+	get name() {
+		return this.#name;
+	}
 
-const admin = Object.create(user);
-console.log(admin)
-admin.log()
-console.log(admin.email)
+	get author() {
+		return this.#author;
+	}
+
+	get length() {
+		return this.#length;
+	}
+}
+
+const film = new Film('Avatar', 'Cameron', 240)
+console.log(film);
