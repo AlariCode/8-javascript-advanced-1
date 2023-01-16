@@ -1,31 +1,53 @@
 'use strict';
 
-class Car {
-	#vin;
-	speed;
+/*
+	Реализовать класс пользователя, со свойствами
+	- логин
+	- пароль
+	Причём пароль при установке должен переворачиваться
+	и в таком виде храниться.
+	Пароль и логин после создания изменить нельзя. Так же у
+	класса добавить методы
+	- Смены пароля (передаём старый и новый пароль)
+	- Сверки пароля
+*/
 
-	constructor() {
-		this.#test2 = 5;
-		this.test3 = 5;
+class User {
+	#login;
+	#_password;
+
+	constructor(login, password) {
+		this.#login = login;
+		this.#password = password;
 	}
 
-	#changeVin() {
-		console.log('changed');
+	set #password(pass) {
+		this.#_password = pass.split('').reverse().join('');
 	}
 
-	test() {
-		// проверка
-		this.#changeVin();
+	get #password() {
+		return this.#_password.split('').reverse().join('');
 	}
 
-	static #field = 3;
+	get login() {
+		return this.#login;
+	}
 
-	static {
-		this.#field = 5;
+	checkPassword(pass) {
+		return this.#password === pass;
+	}
+
+	changePassword(oldPass, newPass) {
+		if (!this.checkPassword(oldPass)) {
+			return false;
+		}
+		this.#password = newPass;
+		return true;
 	}
 }
 
-
-const car = new Car();
-
-car.test();
+const user = new User('a@a.ru', '123');
+console.log(user.checkPassword('234'));
+console.log(user.checkPassword('123'));
+console.log(user.changePassword('123', '234'));
+console.log(user)
