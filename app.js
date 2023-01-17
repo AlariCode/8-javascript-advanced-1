@@ -1,47 +1,28 @@
 'use strict';
-/*
-const Book = function(title, author) {
-	this.title = title;
-	this.author = author;
-}
-
-Book.prototype.buy = function() {
-	console.log('Buy');
-}
-
-const AudioBook = function(title, author, lenMin) {
-	Book.call(this, title, author);
-	this.lenMin = lenMin;
-}
-
-AudioBook.prototype = Object.create(Book.prototype);
-AudioBook.prototype.constructor = AudioBook;
-AudioBook.prototype.log = function() {
-	console.log(`${this.title} - ${this.lenMin}`);
-}*/
-
 class Book {
 	constructor(title, author) {
 		this.title = title;
 		this.author = author;
 	}
 
-	buy() {
-		console.log('Buy');
+	info() {
+		console.log(`${this.title} - ${this.author}`);
 	}
 }
 
-class AudioBook extends Book {
-	constructor(title, author, lenMin) {
+const book1 = new Book('Lord Of The Rings', 'Tolkien');
+book1.info();
+
+class EBook extends Book {
+	constructor(title, author, pages) {
 		super(title, author);
-		this.lenMin = lenMin;
+		this.pages = pages;
 	}
 
-	log() {
-		console.log(`${this.title} - ${this.lenMin}`);
+	info() {
+		console.log(`${this.title} - ${this.author} - ${this.pages}`);
 	}
 }
 
-const book = new AudioBook('Lord Of The Rings', 'Tolkien', 60*20);
-book.log();
-book.buy();
+const book2 = new EBook('Lord Of The Rings', 'Tolkien', 100);
+book2.info();
