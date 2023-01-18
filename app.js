@@ -30,10 +30,6 @@ class Sword {
 }
 
 class Orc extends Enemy {
-	constructor(health) {
-		super(health);
-	}
-
 	recieveDamage(damage) {
 		if(Math.random() > 0.5) {
 			this.health = this.health - damage;
@@ -42,8 +38,16 @@ class Orc extends Enemy {
 	}
 }
 
+class Troll extends Enemy {
+	
+}
+
 const enemy = new Orc(10);
+const enemy2 = new Troll(20);
 const sword = new Sword(3);
 sword.strike(enemy);
 sword.strike(enemy);
 sword.strike(enemy);
+sword.strike(enemy2);
+sword.strike(enemy2);
+sword.strike(enemy2);
