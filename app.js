@@ -1,53 +1,44 @@
 'use strict';
-/*
-	Сделать класс врага со здоровьем и методом получения урона
-	Сделать класс меча, которые имеет силу и методу нанесения
-	урона.
-	Сделать класс орка, который в 50% случаев не получает урон.
-*/
 
-class Enemy {
-	health;
-	constructor(health) {
-		this.health = health;
+class Wallet {
+	balance = 0;
+
+	add(sum) {
+		this.balance += sum;
+		return this;
 	}
 
-	recieveDamage(damage) {
-		this.health = this.health - damage;
-		console.log(this.health);
+	remove(sum) {
+		this.balance -= sum;
+		return this;
 	}
 }
 
-class Sword {
-	#damage;
-	constructor(damage) {
-		this.#damage = damage;
+const wallet = new Wallet();
+const res = wallet
+	.add(100)
+	.remove(10)
+	.add(10);
+console.log(res);
+
+
+class Builder {
+	house = {};
+
+	addRoof() {
+		this.house.roof = 'Roof';
+		return this;
 	}
 
-	strike(enemy) {
-		enemy.recieveDamage(this.#damage);
+	addFloor() {
+		this.house.floor = 'Floor';
+		return this;
+	}
+
+	execute() {
+		return this.house;
 	}
 }
 
-class Orc extends Enemy {
-	recieveDamage(damage) {
-		if(Math.random() > 0.5) {
-			this.health = this.health - damage;
-		}
-		console.log(this.health);
-	}
-}
-
-class Troll extends Enemy {
-	
-}
-
-const enemy = new Orc(10);
-const enemy2 = new Troll(20);
-const sword = new Sword(3);
-sword.strike(enemy);
-sword.strike(enemy);
-sword.strike(enemy);
-sword.strike(enemy2);
-sword.strike(enemy2);
-sword.strike(enemy2);
+const res2 = new Builder().addRoof().addFloor().execute();
+console.log(res2);
