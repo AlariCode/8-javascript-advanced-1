@@ -1,24 +1,21 @@
 'use strict';
 
-class User {
-	#role = 'user';
+class Weapon {
+	cost;
 
-	getRole() {
-		return this.#role;
+	dealDamage() {
+
 	}
 }
 
-class Admin extends User {
-	#role = ['user', 'admin'];
-
-	getRole() {
-		return this.#role.join(', ');
+class Rifle extends Weapon {
+	shoot() {
+		this.dealDamage()
 	}
 }
 
-function logRole(user) {
-	console.log('Role: ' + user.getRole().toUpperCase());
+class Sword extends Weapon {
+	strike() {
+		this.dealDamage()
+	}
 }
-
-logRole(new User());
-logRole(new Admin());
