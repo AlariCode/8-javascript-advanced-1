@@ -1,6 +1,6 @@
 'use strict';
 
-fetch('https://dummyjsons.com/productss')
+fetch('https://dummyjson.com/productss')
 	.then(
 		response => {
 			console.log(response);
@@ -16,4 +16,7 @@ fetch('https://dummyjsons.com/productss')
 	.then(data => {
 		console.log(data)
 	})
-	.catch(error => console.log(error));
+	.catch(error => console.log(error))
+	.finally(() => {
+		console.log('Finally')
+	});
