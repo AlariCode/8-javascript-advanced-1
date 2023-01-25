@@ -1,24 +1,26 @@
 'use strict';
 
-fetch('https://dummyjson.com/productss')
-	.then(
-		response => {
-			if (!response.ok) {
-				throw new Error(`Is error ${response.status}`)
-			}
-			return response.json()
-		}
-	)
-	.then(({ products }) => {
-		console.log(products);
-		return fetch('https://dummyjson.com/products/' + products[0].id)
-		}
-	)
+/*
+	Сделать функцию, которая принимает строку и текст ошибки и
+	возвращает уже Promise с JSON из тела запроса
+*/
+
+function getData(url, errorMessage, method = 'GET') {
+	return fetch(url, {
+		method,
+	})
 	.then(response => {
 		if (!response.ok) {
-			throw new Error(`Is error ${response.status}`)
+			throw new Error(`${errorMessage} ${response.status}`)
 		}
-		response.json()
+		return response.json()
+	})
+}
+
+getData('https://dummyjson.com/products', 'Can not get products')
+	.then(({ products }) => {
+		console.log(products);
+		return getData('https://dummyjson.com/products/' + products[0].id, 'Can not get product')
 	})
 	.then(data => {
 		console.log(data)
