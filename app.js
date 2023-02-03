@@ -1,22 +1,16 @@
 'use strict';
 
-const wrapper = document.querySelector('.wrapper')
-console.log(wrapper)
+document.addEventListener('DOMContentLoaded', function(e) {
+	console.log('DOMContentLoaded');
+	console.log(e);
+});
 
-const inner = wrapper.querySelector('.inner');
-const button = inner.querySelector('.button');
-console.log(inner);
-console.log(inner.childNodes);
-console.log(inner.children);
+window.addEventListener('load', function(e) {
+	console.log('load');
+	console.log(e);
+});
 
-console.log(inner.parentElement);
-console.log(inner.parentNode);
-
-console.log(button.closest('.wrapper'));
-
-console.log(button.previousElementSibling)
-console.log(button.previousSibling)
-console.log(button.nextElementSibling)
-console.log(button.nextSibling)
-
-console.log(button.parentElement.children)
+// window.addEventListener('beforeunload', function(e) {
+// 	e.preventDefault();
+// 	e.returnValue = '';
+// });
