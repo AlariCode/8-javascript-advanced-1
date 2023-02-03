@@ -1,7 +1,7 @@
 .button {
-	background: purple;
 	color: white;
-	border: none;
+	border: 1px solid #333;
+	background: none;
 	padding: 10px;
 	font-size: 18px;
 	cursor: pointer;
@@ -12,11 +12,13 @@
 	justify-content: center;
 	gap: 20px;
 	margin-bottom: 20px;
+	padding: 20px;
+	border: 1px solid #333;
+	border-radius: 10px;
 }
 
 .wrapper > div {
-	background: #333;
 	padding: 20px;
-	color: white;
+	border: 1px solid #333;
 	border-radius: 10px;
 }
