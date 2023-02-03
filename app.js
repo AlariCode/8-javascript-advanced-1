@@ -9,5 +9,4 @@ const eventHandler = function (event) {
 button.addEventListener('mouseover', eventHandler);
 button.addEventListener('click', (event) => {
 	console.log('Event 2');
-	button.removeEventListener('click', eventHandler);
 });
