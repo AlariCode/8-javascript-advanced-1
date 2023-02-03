@@ -1,34 +1,18 @@
 'use strict';
 
-const button = document.querySelector('.button');
-const inner = document.querySelector('.inner');
 const wrapper = document.querySelector('.wrapper');
 
-button.addEventListener('click', function (event) {
-	console.log('button');
-	console.log(event.target);
-	console.log(event.currentTarget);
-	this.style.backgroundColor = 'purple';
-});
+for (let i = 0; i < 100; i++) {
+	const el = document.createElement('div');
+	el.innerHTML = `User id ${i}`;
+	el.setAttribute('data-id', i);
+	// el.addEventListener('click', () => {
+	// 	console.log(`Deleted user ${i}`);
+	// })
+	wrapper.append(el);
+}
 
-inner.addEventListener('click', function (event) {
-	console.log('inner');
-	console.log(event.target);
-	console.log(event.currentTarget);
-	this.style.backgroundColor = 'blue';
-	// event.stopPropagation();
-});
-
-wrapper.addEventListener('click', function (event) {
-	console.log('wrapper');
-	console.log(event.target);
-	console.log(event.currentTarget);
-	this.style.backgroundColor = 'green';
-}, true);
-
-wrapper.addEventListener('click', function (event) {
-	console.log('wrapper');
-	console.log(event.target);
-	console.log(event.currentTarget);
-	this.style.backgroundColor = 'green';
-});
+wrapper.addEventListener('click', (e) => {
+	const i = e.target.getAttribute('data-id');
+	console.log(`Deleted user ${i}`);
+})
