@@ -24,3 +24,8 @@
 	border: 1px solid #333;
 	border-radius: 10px;
 }
+
+.yellow {
+	background: yellow;
+	color: #333;
+}
