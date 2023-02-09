@@ -1062,6 +1062,11 @@
 			this.state = state;
 		}
 
+		search() {
+			const value = this.el.querySelector('input').value;
+			this.state.searchQuery = value;
+		}
+
 		render() {
 			this.el.classList.add('search');
 			this.el.innerHTML = `
@@ -1076,6 +1081,12 @@
 			</div>
 			<button aria-label="Искать"><img src="/static/search-white.svg" alt="Иконка поиска" /></button>
 		`;
+			this.el.querySelector('button').addEventListener('click', this.search.bind(this));
+			this.el.querySelector('input').addEventListener('keydown', (event) => {
+				if (event.code === 'Enter') {
+					this.search();
+				}
+			});
 			return this.el;
 		}
 	}
@@ -1092,6 +1103,7 @@
 			super();
 			this.appState = appState;
 			this.appState = onChange(this.appState, this.appStateHook.bind(this));
+			this.state = onChange(this.state, this.stateHook.bind(this));
 			this.setTitle('Поиск книг');
 		}
 
@@ -1099,6 +1111,20 @@
 			if (path === 'favorites') {
 				console.log(path);
 			}
+		}
+
+		async stateHook(path) {
+			if (path === 'searchQuery') {
+				this.state.loading = true;
+				const data = await this.loadList(this.state.searchQuery, this.state.offset);
+				this.state.loading = false;
+				this.state.list = data.docs;
+			}
+		}
+
+		async loadList(q, offset) {
+			const res = await fetch(`https://openlibrary.org/search.json?q=${q}&offset=${offset}`);
+			return res.json();
 		}
 
 		render() {
