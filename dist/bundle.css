@@ -74,3 +74,11 @@
 	justify-content: center;
 	cursor: pointer;
 }
+
+.card_list__loader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	padding: 30px;
+}
